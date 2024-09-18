@@ -33,6 +33,18 @@ app.get('/version', (req, res) => {
  *  combined with the id sent as a route parameter in the url
  */
 // Your code here
+app.get('/viewers/:id', (req, res) => {
+  let id = req.params.id;
+  let data = {
+    id,
+    firstName: 'Srivatsan',
+    lastName: 'Sozhavaram',
+    birthDate: '08/14/1993',
+    favoriteMovies: ['RRR', 'Bahubali'],
+  };
+  res.set('Content-Type', 'application/json');
+  res.status(200).json(data);
+});
 
 /** Basic Phase 3 - Query params in URL
  *      Method: GET
