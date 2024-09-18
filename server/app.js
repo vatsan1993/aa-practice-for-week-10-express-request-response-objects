@@ -11,6 +11,10 @@ app.use(express.json());
  *     Response (Text): "1.0.0"
  */
 // Your code here
+app.get('/version', (req, res) => {
+  res.set('Content-Type', 'text/plain');
+  res.status(200).send('1.0.0');
+});
 
 /**
  *  Basic Phase 2 - Route param and JSON response
@@ -102,8 +106,8 @@ app.use(express.json());
 
 // DO NOT EDIT - Set port and listener
 if (require.main === module) {
-    const port = 8000;
-    app.listen(port, () => console.log('Server is listening on port', port));
+  const port = 8000;
+  app.listen(port, () => console.log('Server is listening on port', port));
 } else {
-    module.exports = app;
+  module.exports = app;
 }
