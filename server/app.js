@@ -1,8 +1,11 @@
 // DO NOT EDIT - Initialize Express, handle JSON requests
 const express = require('express');
+const path = require('path');
+const fs = require('fs');
 const app = express();
 
 app.use(express.json());
+app.use(express.static(path.join(__dirname, 'public')));
 
 /**
  *  Basic Phase 1 - Plain-text response
@@ -137,6 +140,10 @@ app.post('/movies', (req, res) => {
  *      Test route: /logo.png
  */
 // Your code here
+app.get('/logo.png', (req, res) => {
+  res.set('Content-Type', 'image/png');
+  res.status(200).sendFile(fs.readFile('/public/logo.png'));
+});
 
 // DO NOT EDIT - Set port and listener
 if (require.main === module) {
