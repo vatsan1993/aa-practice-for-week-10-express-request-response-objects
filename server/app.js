@@ -64,7 +64,14 @@ app.get('/viewers/:id', (req, res) => {
  *          message required
  */
 // Your code here
-
+app.get('/info', (req, res) => {
+  let message = req.query.message;
+  res.set('Content-Type', 'text/plain');
+  if (message) {
+    return res.status(200).send(message);
+  }
+  return res.status(200).send('message required');
+});
 /**
  *  IMPORTANT: Scroll to the top for basic phases.
  *
