@@ -13,7 +13,7 @@ app.use(express.json());
 // Your code here
 app.get('/version', (req, res) => {
   res.set('Content-Type', 'text/plain');
-  res.status(200).send('1.0.0');
+  return res.status(200).send('1.0.0');
 });
 
 /**
@@ -105,7 +105,22 @@ app.get('/info', (req, res) => {
  *          { "id": 98765432, "name": "Honey Sweet", "year": 1967, "isFavorite": false }
  */
 // Your code here
+app.post('/movies', (req, res) => {
+  let { name, year, favorite } = req.body;
+  let data = {
+    id: Math.floor(Math.random() * (1000 - 1) + 1),
+    name,
+    year: parseInt(year),
+  };
+  if (favorite == 'on') {
+    data.isFavorite = true;
+  } else {
+    data.isFavorite = false;
+  }
 
+  res.set('Content-Type', 'application/json');
+  return res.status(200).json(data);
+});
 /**
  *  Advanced Bonus Phase B - Research how to return static
  *                           files in a public folder
